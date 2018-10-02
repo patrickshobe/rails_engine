@@ -15,13 +15,13 @@ describe 'Customer API' do
       invoice_3 = create(:invoice,
                        customer_id: customer.id,
                        merchant_id: favorite_merchant.id)
-      transaction_1 = create(:transaction,
+      create(:transaction,
                            invoice_id: invoice_1.id,
                            result: 'Success')
-      transaction_2 = create(:transaction,
+      create(:transaction,
                            invoice_id: invoice_2.id,
                             result: 'Success')
-      transaction_3 = create(:transaction,
+      create(:transaction,
                            invoice_id: invoice_3.id,
                             result: 'Success')
 
