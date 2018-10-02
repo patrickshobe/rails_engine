@@ -7,6 +7,7 @@ namespace :import do
     Invoice.destroy_all
     Item.destroy_all
     InvoiceItem.destroy_all
+    Transaction.destroy_all
 
     CSV.foreach('./data/customers.csv', headers: true) do |row|
       Customer.create(row.to_h)
@@ -26,6 +27,10 @@ namespace :import do
 
     CSV.foreach('./data/invoice_items.csv', headers: true) do |row|
       InvoiceItem.create(row.to_h)
+    end
+
+    CSV.foreach('./data/transactions.csv', headers: true) do |row|
+      Transaction.create!(row.to_h)
     end
   end
 end
