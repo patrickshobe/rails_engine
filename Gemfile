@@ -34,6 +34,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  gem 'fuubar'
 end
 
 group :development do
