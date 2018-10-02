@@ -36,7 +36,7 @@ describe 'Customer API' do
       expect(customer["last_name"]).to eq(name)
     end
     it "it can find a single user by created_at" do
-      customers = create_list(:customer, 3)
+      create_list(:customer, 3)
       cust = Customer.create!(first_name: 'Bart',
                              last_name: 'Simpson',
                              created_at: '2017-01-01 00:00:00',
@@ -51,7 +51,7 @@ describe 'Customer API' do
       expect(customer["first_name"]).to eq(cust.first_name)
     end
     it "it can find a single user by updated_at" do
-      customers = create_list(:customer, 3)
+      create_list(:customer, 3)
       cust = Customer.create!(first_name: 'Bart',
                              last_name: 'Simpson',
                              created_at: '2017-01-01 00:00:00',
