@@ -6,5 +6,4 @@ namespace :import do
       Customer.create(row)
     end
   end
-
 end
