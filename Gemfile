@@ -35,6 +35,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'fuubar'
+  gem 'active_model_serializers'
 end
 
 group :development do

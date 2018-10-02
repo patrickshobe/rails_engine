@@ -7,7 +7,9 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
       end
 
-      resources :customers, only: [:index, :show]
+      resources :customers, only: [:index, :show] do
+        get '/invoices', to: 'customers/invoices#index'
+      end
 
 
     end
