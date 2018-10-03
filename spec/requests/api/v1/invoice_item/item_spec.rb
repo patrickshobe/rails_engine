@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'invoice item api' do
-  describe 'invoice item invoices' do
+  describe 'invoice item items' do
     it 'should show all invoices for the invoice_item' do
       customer = create(:customer)
       merchant = create(:merchant)
@@ -15,7 +15,7 @@ describe 'invoice item api' do
                 item_id: item.id)
 
 
-      get "/api/v1/invoice_items/#{invoice_item.id}/invoice"
+      get "/api/v1/invoice_items/#{invoice_item.id}/item"
 
       expect(response).to be_successful
 

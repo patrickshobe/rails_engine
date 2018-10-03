@@ -8,6 +8,6 @@ class Api::V1::Customers::FavoriteMerchantController < ApplicationController
                  .order('count(transactions.id) desc')
                  .where('invoices.customer_id = ?', params[:customer_id])
                  .group(:id)
-                 .limit(1)
+                 .limit(1).first
   end
 end
