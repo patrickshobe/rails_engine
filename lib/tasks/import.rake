@@ -26,6 +26,7 @@ namespace :import do
     end
 
     CSV.foreach('./data/invoice_items.csv', headers: true) do |row|
+      row["unit_price"] = row["unit_price"].to_s.insert(-3, ".")
       InvoiceItem.create(row.to_h)
     end
 
