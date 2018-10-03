@@ -34,6 +34,8 @@ Rails.application.routes.draw do
         get '/item', to: 'invoice_items/items#index'
       end
 
+      resources :invoices, only: [:index, :show]
+
     end
   end
 end

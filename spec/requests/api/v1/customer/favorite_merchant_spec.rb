@@ -32,7 +32,7 @@ describe 'Customer API' do
 
       merchant_response = JSON.parse(response.body)
 
-      expect(merchant_response.first["id"]).to eq(favorite_merchant.id)
+      expect(merchant_response["id"]).to eq(favorite_merchant.id)
     end
   end
 end
