@@ -16,7 +16,7 @@ describe 'Customer API' do
                                      result: 'Success')
 
 
-      get "/api/v1/transactions/#{transact.id}/invoices"
+      get "/api/v1/transactions/#{transact.id}/invoice"
 
       expect(response).to be_successful
 

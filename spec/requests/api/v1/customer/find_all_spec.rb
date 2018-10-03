@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Customer API' do
-  describe 'Find endpoints' do
+  describe 'Find all endpoints' do
     it "it can find all user by id" do
       id = create(:customer).id
 

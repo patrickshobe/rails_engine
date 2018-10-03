@@ -5,9 +5,16 @@ class Api::V1::Transactions::FindController < ApplicationController
 
   def index
     render json: Transaction.where(transaction_params)
+
   end
   private
   def transaction_params
-    params.permit(:first_name, :last_name, :id, :updated_at, :created_at)
+    params.permit(:credit_card_number,
+                  :credit_card_expiration_date,
+                  :id,
+                  :updated_at,
+                  :created_at,
+                  :result,
+                  :invoice_id)
   end
 end
