@@ -48,6 +48,8 @@ Rails.application.routes.draw do
         get '/merchants', to: 'invoices/merchants#index'
       end
 
+      resources :items, only: [:index, :show]
+
     end
   end
 end
