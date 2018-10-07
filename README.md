@@ -1,24 +1,15 @@
-# README
+# Rails Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails engine is a merchant analytics API.
 
-Things you may want to cover:
+### Set Up
 
-* Ruby version
+Database Set up:
+```bash
+# this creates and sets up the database
+rake db:{drop,create,migrate}
 
-* System dependencies
+# To import data:
+rake import:all
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
