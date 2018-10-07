@@ -10,7 +10,7 @@ describe 'Invoice API' do
                        merchant_id: merchant.id)
 
 
-      get "/api/v1/invoices/#{invoice.id}/customers"
+      get "/api/v1/invoices/#{invoice.id}/customer"
 
       expect(response).to be_successful
 

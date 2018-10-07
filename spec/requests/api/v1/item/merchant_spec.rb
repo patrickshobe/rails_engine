@@ -7,7 +7,7 @@ describe 'Items API' do
       item = create(:item,
                     merchant_id: merchant.id)
 
-      get "/api/v1/items/#{item.id}/merchants"
+      get "/api/v1/items/#{item.id}/merchant"
 
       expect(response).to be_successful
 
