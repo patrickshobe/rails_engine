@@ -40,4 +40,40 @@ class Merchant < ApplicationRecord
                           and to_char(invoices.created_at, 'YYYY-MM-DD') = '#{params}'
                           group by invoice_date;").first.revenue
   end
+
+	def self.favorite_customer(merchant_id)
+    Customer
+          .select("customers.*, COUNT(invoices.id) AS order_count")
+          .joins(invoices: :transactions)
+          .where(invoices: { merchant_id: merchant_id }, transactions: { result: 'success'})
+          .group(:id)
+          .order("order_count DESC")
+          .limit(1)
+          .first
+  end
+
+  def self.merchant_revenue(merchant_id)
+    find_by_sql("SELECT
+                          SUM(invoice_items.quantity * invoice_items.unit_price) as sum
+                          from merchants
+                          join invoices ON invoices.merchant_id = merchants.id
+                          join invoice_items ON invoice_items.invoice_id = invoices.id
+                          join transactions ON transactions.invoice_id = invoices.id
+                          where transactions.result = 'success'
+                          and merchants.id = #{merchant_id}
+                          group by merchants.id;").first
+  end
+
+  def self.merchant_revenue_date(parameters)
+    find_by_sql("SELECT
+                          SUM(invoice_items.quantity * invoice_items.unit_price) as sum
+                          from merchants
+                          join invoices ON invoices.merchant_id = merchants.id
+                          join invoice_items ON invoice_items.invoice_id = invoices.id
+                          join transactions ON transactions.invoice_id = invoices.id
+                          where transactions.result = 'success'
+                          and merchants.id = #{parameters[:merchant_id]}
+                          and to_char(invoices.created_at, 'YYYY-MM-DD') = '#{parameters[:date]}'
+                          group by merchants.id;").first
+  end
 end
