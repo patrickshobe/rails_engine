@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get '/find', to: 'find#show'
         get '/find_all', to: 'find#index'
         get '/random', to: 'random#show'
+        get '/most_items', to: 'top_items#show'
       end
 
       namespace :transactions do
