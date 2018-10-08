@@ -40,7 +40,7 @@ namespace :import do
     CSV.foreach('./data/transactions.csv', headers: true) do |row|
       Transaction.create!(row.to_h)
     end
-    puts "Transactions Inserted: #{Transactions.count}"
+    puts "Transactions Inserted: #{Transaction.count}"
 
     puts 'All Data Inserted'
   end
