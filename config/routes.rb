@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get '/find_all', to: 'find#index'
         get '/random', to: 'random#show'
         get '/most_items', to: 'top_items#show'
+        get '/most_revenue', to: 'most_revenue#show'
       end
 
       namespace :transactions do
@@ -67,6 +68,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show] do
         get '/invoice_items', to: 'items/invoice_items#index'
         get '/merchant', to: 'items/merchants#index'
+        get '/best_day', to: 'items/best_day#show'
       end
 
       resources :merchants, only: [:index, :show] do
