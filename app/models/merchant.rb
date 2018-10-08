@@ -76,4 +76,18 @@ class Merchant < ApplicationRecord
                           and to_char(invoices.created_at, 'YYYY-MM-DD') = '#{parameters[:date]}'
                           group by merchants.id;").first
   end
+
+  def self.pending_invoices(merchant_id)
+    Customer.find_by_sql("SELECT customers.* FROM customers
+      INNER JOIN invoices ON customers.id=invoices.customer_id
+      INNER JOIN transactions ON transactions.invoice_id=invoices.id
+      INNER JOIN merchants ON merchants.id=invoices.merchant_id
+      WHERE merchants.id=#{merchant_id} AND transactions.result='failed'
+      EXCEPT
+      SELECT customers.* FROM customers
+      INNER JOIN invoices ON customers.id=invoices.customer_id
+      INNER JOIN transactions ON transactions.invoice_id=invoices.id
+      INNER JOIN merchants ON merchants.id=invoices.merchant_id
+      WHERE merchants.id=#{merchant_id} AND transactions.result='success'")
+  end
 end

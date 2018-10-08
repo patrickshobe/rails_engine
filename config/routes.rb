@@ -76,7 +76,7 @@ Rails.application.routes.draw do
         get '/invoices', to: 'merchants/invoices#index'
         get '/favorite_customer', to: 'merchants/favorite_customer#show'
         get '/revenue', to: 'merchants/merchant_revenue#show'
-
+        get '/customers_with_pending_invoices', to: 'merchants/pending_invoices#show'
       end
 
     end
